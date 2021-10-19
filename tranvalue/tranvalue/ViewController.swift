@@ -34,9 +34,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination
+        
+        guard let rvc = dest as? ResultViewController else{
+            return
+            
+        }
+        
+        rvc.paramEmail = self.email.text!
+        rvc.paramUpdate = self.isUpdate.isOn
+        rvc.paramInterval = self.interval.value
+        
+    }
 
+    @IBAction func onSeg(_ sender: Any) {
+        self.performSegue(withIdentifier: "manualseg", sender: self)
+   
+    
+    
+    }
     @IBAction func onSubmit(_ sender: Any) {
-        let ctrl = sender as! UIButton
         
         guard let rvc = self.storyboard?.instantiateViewController(withIdentifier: "RVC") as? ResultViewController else{return}
         
@@ -44,8 +63,8 @@ class ViewController: UIViewController {
         rvc.paramUpdate = self.isUpdate.isOn
         rvc.paramInterval = self.interval.value
         
-        self.present(rvc, animated: true)
-        
+        //self.present(rvc, animated: true)
+        self.navigationController?.pushViewController(rvc, animated: true)
     }
     
 }
