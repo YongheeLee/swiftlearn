@@ -59,11 +59,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g38-oD-Dsa">
-                                <rect key="frame" x="151" y="230" width="57" height="30"/>
+                                <rect key="frame" x="110" y="219" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <segue destination="lUv-Qt-yRV" kind="presentation" id="aOr-MO-X3L"/>
+                                    <action selector="change:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UdA-h3-3Ht"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,9 +83,9 @@
         <!--Form View Controller-->
         <scene sceneID="x6v-ys-qRb">
             <objects>
-                <viewController id="lUv-Qt-yRV" customClass="FormViewController" customModule="submitback" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondVC" id="lUv-Qt-yRV" customClass="FormViewController" customModule="submitback" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GRZ-bN-PZl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st9-bl-HJg">

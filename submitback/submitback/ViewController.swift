@@ -21,21 +21,32 @@ class ViewController: UIViewController {
     
     @IBOutlet var resultPeriod: UILabel!
     
-    var paramEmail: String?
-    var paramUpdate: Bool?
-    var paramPeriod: Double?
+    
+    @IBAction func change(_ sender: Any) {
+        let uvc = self.storyboard!.instantiateViewController(withIdentifier: "SecondVC")
+                
+                //아래는 애니메이션 타입
+                uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                
+                self.present(uvc, animated: true)
+        
+    }
     
     //아래는 뷰가 전환될때 마다 호출
     override func viewWillAppear(_ animated: Bool) {
-        if let email = paramEmail{
+        
+        
+        let ad = UIApplication.shared.delegate as? AppDelegate
+        
+        if let email = ad?.paramEmail{
             resultEmail.text = email
         }
         
-        if let update = paramUpdate{
+        if let update = ad?.paramUpdate{
             resultUpdate.text = update == true ? "auto update" : "manual update"
         }
         
-        if let period = paramPeriod{
+        if let period = ad?.paramPeriod{
             resultPeriod.text = "\(Int(period))each minute"
         }
     }

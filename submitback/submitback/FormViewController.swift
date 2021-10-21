@@ -16,12 +16,21 @@ class FormViewController : UIViewController
     
     
     @IBAction func onSubmit(_ sender: Any) {
-        let preVC = self.presentationController
-        guard let vc = preVC as? ViewController else{return}
         
-        vc.paramEmail = self.email.text
-        vc.paramUpdate = self.update.isOn
-        vc.paramPeriod = self.period.value
+        //let preVC = self.presentationController
+        //guard let vc = preVC as? ViewController else{return}
+        
+        //vc.paramEmail = self.email.text
+        //vc.paramUpdate = self.update.isOn
+        //vc.paramPeriod = self.period.value
+        
+        
+        let ad = UIApplication.shared.delegate as? AppDelegate
+        
+        ad?.paramEmail = self.email.text
+        ad?.paramUpdate = self.update.isOn
+        ad?.paramPeriod = self.period.value
+        
         
         self.presentingViewController?.dismiss(animated: true)
     }
