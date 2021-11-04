@@ -34,43 +34,58 @@ class ListViewController : UITableViewController{
 
     
     override func viewDidLoad() {
-        var mvo = MovieVO()
-        mvo.title = "다크나이트"
-        mvo.description = "배트맨이랑 조커 나옴"
-        mvo.opendate = "2008-09-04"
-        mvo.rating = 8.95
-        self.list.append(mvo)
         
-        mvo = MovieVO()
-        mvo.title = "호우시절"
-        mvo.description = "비내리는 날"
-        mvo.opendate = "2009-10-04"
-        mvo.rating = 7.31
-        self.list.append(mvo)
+       // var mvo = MovieVO()
+      //  mvo.title = "다크나이트"
+      //  mvo.description = "배트맨이랑 조커 나옴"
+      //  mvo.opendate = "2008-09-04"
+      //  mvo.rating = 8.95
+      //  self.list.append(mvo)
         
-        mvo = MovieVO()
-        mvo.title = "말할 수 없는 비밀"
-        mvo.description = "말하지 마"
-        mvo.opendate = "2015-05-07"
-        mvo.rating = 9.19
-        self.list.append(mvo)
+      //  mvo = MovieVO()
+       // mvo.title = "호우시절"
+       // mvo.description = "비내리는 날"
+       // mvo.opendate = "2009-10-04"
+      //  mvo.rating = 7.31
+      //  self.list.append(mvo)
+        
+      //  mvo = MovieVO()
+      //  mvo.title = "말할 수 없는 비밀"
+       // mvo.description = "말하지 마"
+      //  mvo.opendate = "2015-05-07"
+       // mvo.rating = 9.19
+      //  self.list.append(mvo)
         
         //use dataset
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.list.count
+        return self.listTuple.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = self.list[indexPath.row]
+        let row = self.listTuple[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        //let cell = tableView.dequeueReusableCell(withIdentifier: //"cell")!
+                        
+        //cell.textLabel?.text = row.title
+        //cell.detailTextLabel?.text = row.description
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MovieCell
         
-                cell?.textLabel?.text = row.title
+        //let title = cell.viewWithTag(101) as? UILabel
+        //let desc = cell.viewWithTag(102) as? UILabel
+        //let open = cell.viewWithTag(103) as? UILabel
+        //let rating = cell.viewWithTag(104) as? UILabel
         
+        //title?.text = row.title
+        //desc?.text = row.description
+        //open?.text = row.opendate
+        //rating?.text = "\row.rating!)"
+        cell.title?.text = row.title
+        cell.desc?.text = row.description
+        cell.open?.text = row.opendate
         
-        return cell!
+        return cell
     }
 }
