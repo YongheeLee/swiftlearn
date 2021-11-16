@@ -8,6 +8,7 @@
 import UIKit
 
 class ListViewController : UITableViewController{
+    var page = 1
     
     var list = [MovieVO]()
         
@@ -35,6 +36,35 @@ class ListViewController : UITableViewController{
     
     override func viewDidLoad() {
         
+        let url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+        let apiURI: URL! = URL(string: url)
+        
+        let apidata = try? Data(contentsOf: apiURI)
+        
+        let log = NSString(data: apidata!, encoding: String.Encoding.utf8.rawValue) ?? ""
+        
+        NSLog("Api results=\( log )")
+        
+        do{
+            let dictionary = try JSONSerialization.jsonObject(with: apidata!, options: []) as! NSArray
+            for item in dictionary
+            {
+                let dic = item as! NSDictionary
+                
+                var mvo = MovieVO()
+                
+                mvo.title = dic["name"] as? String
+                mvo.description = dic["description"]as? String
+                
+                self.list.append(mvo)
+            }
+            //let error = dictionary["error"] as! NSDictionary
+            
+            
+        }
+        catch{
+        }
+        
        // var mvo = MovieVO()
       //  mvo.title = "다크나이트"
       //  mvo.description = "배트맨이랑 조커 나옴"
@@ -60,12 +90,16 @@ class ListViewController : UITableViewController{
         
     }
     
+    @IBAction func more(_ sender: Any) {
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listTuple.count
+        return self.list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = self.listTuple[indexPath.row]
+        let row = self.list[indexPath.row]
         
         //let cell = tableView.dequeueReusableCell(withIdentifier: //"cell")!
                         

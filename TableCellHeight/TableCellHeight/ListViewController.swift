@@ -52,7 +52,7 @@ class ListViewController : UITableViewController{
     }
     
     override func viewDidLoad() {
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=2&page=1&count=10&genreld=&order=releasedateasc"
+        let url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
         let apiURI: URL! = URL(string: url)
         
         let apidata = try? Data(contentsOf: apiURI)
